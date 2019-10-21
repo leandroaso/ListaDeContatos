@@ -19,8 +19,7 @@ namespace EntityFrameworkCore.Repository
 
         public void Delete(T entity)
         {
-            T existing = _unitOfWork.Context.Set<T>().Find(entity);
-            if (existing != null) _unitOfWork.Context.Set<T>().Remove(existing);
+            if (entity != null) _unitOfWork.Context.Set<T>().Remove(entity);
         }
 
         public IEnumerable<T> Get()

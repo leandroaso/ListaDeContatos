@@ -28,6 +28,7 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddDbContext<ContatoContext>();
             //services.AddDbContext<ContatoContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -44,6 +45,12 @@ namespace Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(
+                options => options.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                );
 
             app.UseHttpsRedirection();
 

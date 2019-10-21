@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, empty } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+
 import { ContatosService } from './contatos.service';
-import { catchError, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contatos',
@@ -20,18 +21,17 @@ export class ContatosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.onRefresh();
   }
 
   onRefresh() {
     this.contatos$ = this.contatosService.list().pipe(
-      tap(),
       catchError(error => {
         console.error(error);
         return empty();
       })
     );
-
+    console.log(this.contatos$);
   }
 
   onEdit(id) {
@@ -39,7 +39,11 @@ export class ContatosComponent implements OnInit {
   }
 
   onDelete(contato) {
-    this.contatosService.remove(contato.id);
+    this.contatosService.remove(contato.id).subscribe( 
+      success => {
+        this.onRefresh();
+      }
+      );
   }
 
 }

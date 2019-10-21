@@ -35,11 +35,13 @@ namespace Core.Services
         public void Update(int id, Contato contato)
         {
             _repository.Update(contato);
+            _unitOfWork.Commit();
         }
 
         public void Delete(int id)
         {
             _repository.Delete(this.Get(id));
+            _unitOfWork.Commit();
         }
     }
 }

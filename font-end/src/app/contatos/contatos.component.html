@@ -8,13 +8,14 @@
       </div>
     </div>
     <div class="card-body">
-      <table class="table table-hover" *ngIf="(contatos$ | async)">
+      <table class="table table-hover table-striped" *ngIf="(contatos$ | async) as contatos;">
         <thead>
           <tr>
             <th>Id</th>
             <th>Nome</th>
             <th>Telefone</th>
             <th>E-mail</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>

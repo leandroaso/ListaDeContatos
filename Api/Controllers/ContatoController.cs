@@ -17,12 +17,6 @@ namespace Api.Controllers
         public ContatoController(IContatoService service)
         {
             _service = service;
-
-            _service.Add(new Contato { 
-                Nome= "Leandro",
-                Telefone = "858585",
-                Email = "leandro@gmail.com"
-            });
         }
 
         // GET: api/Contato
@@ -53,7 +47,7 @@ namespace Api.Controllers
             _service.Update(id, contato);
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/contatos/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

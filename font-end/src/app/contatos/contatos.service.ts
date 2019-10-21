@@ -34,7 +34,13 @@ export class ContatosService {
     return this.create(contato);
   }
 
+  getById(id){
+    return this.http.get<any>(`${this.URL_API}/${id}`);
+  }
+
   remove(id) {
+    console.log(id);
+    console.log(`${this.URL_API}/${id}`);
     return this.http.delete(`${this.URL_API}/${id}`).pipe(take(1));
   }
 }
