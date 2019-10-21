@@ -1,0 +1,9 @@
+.vs/
+Api/bin/
+Api/obj/
+Core/bin/
+Core/obj/
+Entidades/bin/
+Entidades/obj/
+EntityFrameworkCore/bin/
+EntityFrameworkCore/obj/
